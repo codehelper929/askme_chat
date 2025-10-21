@@ -3,27 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Why Sky is Blue</title>
+  <title>Chat with GPT</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://js.puter.com/v2/"></script>
 </head>
 <body>
   <div class="container">
     <div class="logo">
       <img src="logo.png" alt="Logo">
     </div>
-    <div class="content">
-      <div class="question-section">
-        <h2>Question</h2>
-        <p>Why sky is blue?</p>
-      </div>
-      <div class="answer-section">
-        <h2>Answer</h2>
-        <p>
-          The sky is blue because sunlight scatters in the atmosphere. Blue light gets
-          scattered more than other colors, making the sky look blue.
-        </p>
+    <div class="chat-container">
+      <div id="chat-messages" class="chat-messages"></div>
+      <div class="chat-input">
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button id="send-button">Send</button>
       </div>
     </div>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
