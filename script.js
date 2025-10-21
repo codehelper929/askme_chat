@@ -13,8 +13,9 @@ messageInput.addEventListener('keypress', (e) => {
 
 function sendMessage() {
   const userMessage = messageInput.value.trim();
-  if (!userMessage) return;
+  if (!userMessage || sendButton.disabled) return;
 
+  sendButton.disabled = true;
   addMessage('user', userMessage);
   messages.push({ role: 'user', content: userMessage });
   messageInput.value = '';
@@ -27,13 +28,21 @@ function sendMessage() {
     .catch(error => {
       console.error('Error:', error);
       addMessage('bot', 'Sorry, there was an error processing your request.');
+    })
+    .finally(() => {
+      sendButton.disabled = false;
     });
 }
 
 function addMessage(sender, text) {
   const messageDiv = document.createElement('div');
   messageDiv.classList.add('message', sender);
-  messageDiv.textContent = text;
+
+  const bubbleDiv = document.createElement('div');
+  bubbleDiv.classList.add('message-bubble');
+  bubbleDiv.textContent = text;
+
+  messageDiv.appendChild(bubbleDiv);
   chatMessages.appendChild(messageDiv);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
